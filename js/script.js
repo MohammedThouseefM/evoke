@@ -21,14 +21,14 @@ window.addEventListener('scroll', () => {
     header.classList.toggle('scrolled', window.scrollY > 50);
 });
 
-window.addEventListener('scroll', () => {
-    const header = document.getElementById('header');
-    if (window.scrollY > 50) {
-        header.classList.add('scrolled');
-    } else {
-        header.classList.remove('scrolled');
-    }
-});
+// window.addEventListener('scroll', () => {
+//     const header = document.getElementById('header');
+//     if (window.scrollY > 50) {
+//         header.classList.add('scrolled');
+//     } else {
+//         header.classList.remove('scrolled');
+//     }
+// });
 
 // Testimonial slider
 const slides = document.querySelectorAll('.testimonial-slide');
