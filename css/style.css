@@ -644,7 +644,7 @@ header.scrolled {
 /* Product Grid */
 .products-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: 30px;
     padding: 20px;
 }
@@ -683,7 +683,7 @@ header.scrolled {
 
 .product-info {
     padding: 20px;
-    text-align: center;
+    /* text-align: center; */
 }
 
 .product-category {
@@ -1159,7 +1159,7 @@ footer {
     .video-background video {
         position: fixed;
         top: 0;
-        left: -110%;
+        left: -120%;
     }
     
     .hero h1 {
