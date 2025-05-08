@@ -252,7 +252,7 @@ document.getElementById('whatsappOrderForm').addEventListener('submit', function
     const productImage = document.getElementById('whatsappProductImage').value;
     
     // Your WhatsApp number (include country code without + sign)
-    const whatsappNumber = '9043950148'; // Replace with your number
+    const whatsappNumber = '7826080800'; // your number
     
     const message = `*NEW ORDER* 🛍️
     
@@ -300,3 +300,193 @@ document.addEventListener('DOMContentLoaded', function() {
         .catch(error => console.error('Error fetching products:', error));
     */
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+    const contactForm = document.getElementById('contactForm');
+    const submitBtn = document.getElementById('submitBtn');
+    const formResponse = document.getElementById('formResponse');
+    
+    // Form submission handler
+    contactForm.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        
+        // Validate form
+        if (!validateForm()) {
+            return;
+        }
+        
+        // Get form data
+        const formData = {
+            name: document.getElementById('contactName').value.trim(),
+            email: document.getElementById('contactEmail').value.trim(),
+            subject: document.getElementById('contactSubject').value.trim(),
+            message: document.getElementById('contactMessage').value.trim()
+        };
+        
+        // Show loading state
+        submitBtn.classList.add('loading');
+        submitBtn.disabled = true;
+        
+        try {
+            // In a real application, you would send this to your backend
+            // For this example, we'll simulate an API call
+            const response = await simulateApiCall(formData);
+            
+            // Show success message
+            showResponse('success', 'Message sent successfully! We will get back to you soon.');
+            
+            // Reset form
+            contactForm.reset();
+        } catch (error) {
+            // Show error message
+            showResponse('error', 'Failed to send message. Please try again later.');
+            console.error('Error:', error);
+        } finally {
+            // Reset button state
+            submitBtn.classList.remove('loading');
+            submitBtn.disabled = false;
+        }
+    });
+    
+    // Form validation
+    function validateForm() {
+        let isValid = true;
+        const name = document.getElementById('contactName').value.trim();
+        const email = document.getElementById('contactEmail').value.trim();
+        const message = document.getElementById('contactMessage').value.trim();
+        
+        // Reset error states
+        document.querySelectorAll('.form-group').forEach(group => {
+            group.classList.remove('invalid');
+        });
+        
+        // Validate name
+        if (name === '') {
+            document.getElementById('nameError').textContent = 'Name is required';
+            document.getElementById('contactName').parentElement.classList.add('invalid');
+            isValid = false;
+        } else if (name.length < 2) {
+            document.getElementById('nameError').textContent = 'Name must be at least 2 characters';
+            document.getElementById('contactName').parentElement.classList.add('invalid');
+            isValid = false;
+        }
+        
+        // Validate email
+        if (email === '') {
+            document.getElementById('emailError').textContent = 'Email is required';
+            document.getElementById('contactEmail').parentElement.classList.add('invalid');
+            isValid = false;
+        } else if (!isValidEmail(email)) {
+            document.getElementById('emailError').textContent = 'Please enter a valid email';
+            document.getElementById('contactEmail').parentElement.classList.add('invalid');
+            isValid = false;
+        }
+        
+        // Validate message
+        if (message === '') {
+            document.getElementById('messageError').textContent = 'Message is required';
+            document.getElementById('contactMessage').parentElement.classList.add('invalid');
+            isValid = false;
+        } else if (message.length < 10) {
+            document.getElementById('messageError').textContent = 'Message must be at least 10 characters';
+            document.getElementById('contactMessage').parentElement.classList.add('invalid');
+            isValid = false;
+        }
+        
+        return isValid;
+    }
+    
+    // Email validation helper
+    function isValidEmail(email) {
+        const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return re.test(email);
+    }
+    
+    // Show response message
+    function showResponse(type, message) {
+        formResponse.textContent = message;
+        formResponse.className = 'form-response ' + type;
+        
+        // Hide message after 5 seconds
+        setTimeout(() => {
+            formResponse.style.display = 'none';
+        }, 5000);
+    }
+    
+    // Simulate API call (replace with real fetch in production)
+    function simulateApiCall(data) {
+        return new Promise((resolve, reject) => {
+            setTimeout(() => {
+                // Simulate random success/failure for demo
+                const isSuccess = Math.random() > 0.2; // 80% success rate
+                
+                if (isSuccess) {
+                    console.log('Form data:', data);
+                    resolve({ status: 'success' });
+                } else {
+                    reject(new Error('Network error'));
+                }
+            }, 1500); // Simulate network delay
+        });
+    }
+    
+    // Real implementation would look like this:
+    /*
+    async function sendContactForm(data) {
+        try {
+            const response = await fetch('https://your-api-endpoint.com/contact', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data)
+            });
+            
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            
+            return await response.json();
+        } catch (error) {
+            throw error;
+        }
+    }
+    */
+});
+
+// // server.js
+// const express = require('express');
+// const bodyParser = require('body-parser');
+// const cors = require('cors');
+// const app = express();
+
+// app.use(cors());
+// app.use(bodyParser.json());
+
+// // Contact form endpoint
+// app.post('/api/contact', (req, res) => {
+//     const { name, email, subject, message } = req.body;
+    
+//     // Validate input
+//     if (!name || !email || !message) {
+//         return res.status(400).json({ error: 'Missing required fields' });
+//     }
+    
+//     // In a real application, you would:
+//     // 1. Save to database
+//     // 2. Send email notification
+//     // 3. Maybe send confirmation email to user
+    
+//     console.log('New contact message:', { name, email, subject, message });
+    
+//     // Simulate processing delay
+//     setTimeout(() => {
+//         res.json({ 
+//             success: true,
+//             message: 'Your message has been received. We will contact you soon.'
+//         });
+//     }, 1000);
+// });
+
+// const PORT = process.env.PORT || 3000;
+// app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

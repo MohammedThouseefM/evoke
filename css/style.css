@@ -859,6 +859,76 @@ header.scrolled {
     min-height: 150px;
 }
 
+.error-message {
+    color: #e74c3c;
+    font-size: 0.8rem;
+    margin-top: 5px;
+    display: none;
+}
+
+.form-group.invalid .error-message {
+    display: block;
+}
+
+.form-group.invalid input,
+.form-group.invalid textarea {
+    border-color: #e74c3c;
+}
+
+.form-response {
+    margin-top: 20px;
+    padding: 10px;
+    border-radius: 5px;
+    display: none;
+}
+
+.form-response.success {
+    background-color: #d4edda;
+    color: #155724;
+    display: block;
+}
+
+.form-response.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    display: block;
+}
+
+#submitBtn {
+    position: relative;
+}
+
+#submitBtn.loading {
+    pointer-events: none;
+    opacity: 0.7;
+}
+
+#submitBtn.loading::after {
+    content: "";
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    border: 3px solid transparent;
+    border-top-color: #ffffff;
+    border-radius: 50%;
+    animation: button-loading-spinner 1s ease infinite;
+}
+
+@keyframes button-loading-spinner {
+    from {
+        transform: rotate(0turn);
+    }
+    to {
+        transform: rotate(1turn);
+    }
+}
+
+
 /* Newsletter Section */
 .newsletter {
     background-color: var(--primary-color);
@@ -1086,6 +1156,12 @@ footer {
 }
 
 @media (max-width: 576px) {
+    .video-background video {
+        position: fixed;
+        top: 0;
+        left: -110%;
+    }
+    
     .hero h1 {
         font-size: 2.5rem;
     }
