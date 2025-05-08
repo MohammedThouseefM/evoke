@@ -231,6 +231,7 @@ header.scrolled {
     display: none;
     cursor: pointer;
     font-size: 1.5rem;
+    color: var(--primary-color);
 }
 
 /* Hero Section */
