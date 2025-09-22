@@ -113,7 +113,7 @@ document.getElementById('whatsappOrderForm').addEventListener('submit', function
     const productImage = document.getElementById('whatsappProductImage').value;
     
     // Your WhatsApp number (include country code without + sign)
-    const whatsappNumber = '7826080800'; // your number
+    const whatsappNumber = '9025105576'; // your number
     
     const message = `*NEW ORDER* 🛍️
     

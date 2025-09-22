@@ -13,7 +13,7 @@
 
 <body>
     <!-- Header -->
-    <header id="header">
+    <header id="header" style="background-color: #2a1a28;">
         <div class="container">
             <nav class="navbar">
                 <a href="#" class="logo">
@@ -35,91 +35,8 @@
         </div>
     </header>
 
-    <div class="video-background" id="home">
-        <video autoplay muted loop playsinline>
-            <source src="/video/video.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-    </div>
-
-    <div class="content">
-        <h1>Discover Your Signature Scent</h1>
-        <p>Explore our exquisite collection of luxury perfumes crafted with the finest ingredients from around the
-            world. Find the perfect fragrance that tells your story.</p>
-        <a href="#shop" class="btn">Shop Now</a>
-    </div>
-
-    <!-- About Section -->
-    <section class="about section-padding" id="about">
-        <div class="container">
-            <div class="about-content">
-                <div class="about-text">
-                    <h2 class="section-title">About Us</h2>
-                    <p>AuraMist Perfume offers samples of luxury branded perfumes, providing a simple and convenient way
-                        to explore a wide variety of scents before investing in a full-sized bottle.</p>
-                    <p>Choosing the right fragrance can be challenging, and blind buys often lead to disappointment. Our
-                        carefully curated samples let you experience the essence of premium perfumes, helping you find a
-                        scent that truly matches your style and personality. Enjoy the freedom to discover and indulge
-                        in the world of luxury perfumes without the guesswork.</p>
-                </div>
-
-                <div class="about-img">
-                    <img src="/photos/IMG-20250506-WA0001.jpg" alt="About Essence">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Shop Section -->
-    <section class="shop section-padding" id="shop">
-        <div class="container">
-            <div class="shop-header">
-                <h2 class="section-title">Our Products</h2>
-            </div>
-
-            <div class="products-grid" id="productsContainer">
-                <!-- Products will be loaded here dynamically -->
-            </div>
-        </div>
-    </section>
-
-    <!-- WhatsApp Order Form (hidden by default) -->
-    <div class="whatsapp-form-modal" id="whatsappFormModal">
-        <div class="modal-content">
-            <span class="close-modal">&times;</span>
-            <h3>Order Details</h3>
-            <form id="whatsappOrderForm">
-                <input type="hidden" id="whatsappProductName">
-                <input type="hidden" id="whatsappProductPrice">
-                <input type="hidden" id="whatsappProductImage">
-
-                <div class="form-group">
-                    <label for="customerName">Your Name*</label>
-                    <input type="text" id="customerName" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="customerPhone">WhatsApp Number*</label>
-                    <input type="tel" id="customerPhone" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="customerAddress">Delivery Address*</label>
-                    <textarea id="customerAddress" required></textarea>
-                </div>
-
-                <div class="form-group">
-                    <label for="customerQuantity">Quantity</label>
-                    <input type="number" id="customerQuantity" value="1" min="1">
-                </div>
-
-                <button type="submit" class="btn">Send Order via WhatsApp</button>
-            </form>
-        </div>
-    </div>
-
     <!-- Contact Section -->
-    <section class="contact section-padding" id="contact">
+    <section class="contact section-padding" id="contact" style="padding-top: 150px;">
         <div class="container">
             <h2 class="section-title">Contact Us</h2>
 
@@ -249,5 +166,3 @@
     <script src="/js/script.js"></script>
     <script src="/js/datafetching.js"></script>
 </body>
-
-</html>
